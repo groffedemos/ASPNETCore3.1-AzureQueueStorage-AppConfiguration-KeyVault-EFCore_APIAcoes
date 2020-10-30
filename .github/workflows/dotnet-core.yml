@@ -17,7 +17,7 @@ jobs:
     - name: Dump steps context
       env:
         STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
+      run: echo "$STEPS_CONTEXT"
 
     - name: Teste Slack
       shell: pwsh

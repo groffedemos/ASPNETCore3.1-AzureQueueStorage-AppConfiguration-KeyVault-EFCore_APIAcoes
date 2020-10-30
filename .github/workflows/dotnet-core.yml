@@ -23,7 +23,7 @@ ASPNETCore3.1-AzureQueueStorage-AppConfiguration-KeyVault-EFCore_APIAcoes/.githu
       env:
         VALOR: aa
       run: |
-        echo ${ env:GITHUB_RUN_NUMBER }
+        Write-Host ${env:GITHUB_RUN_NUMBER}
         Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "${{ env.VALOR }}" }'
 
     - name: Setup .NET Core

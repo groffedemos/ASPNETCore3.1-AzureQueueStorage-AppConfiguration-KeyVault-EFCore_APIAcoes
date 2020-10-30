@@ -15,7 +15,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Teste número execução
-      run: echo "$GITHUB_RUN_NUMBER"
+      env:
+        TESTE: Worflow $GITHUB_RUN_NUMBER
+      run: |
+        echo "$GITHUB_RUN_NUMBER"
+        echo ${{ env.TESTE }}
 
     - name: Teste Slack
       shell: pwsh

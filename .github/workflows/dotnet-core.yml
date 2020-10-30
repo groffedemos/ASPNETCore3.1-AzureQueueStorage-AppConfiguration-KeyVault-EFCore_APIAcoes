@@ -17,7 +17,7 @@ jobs:
     - name: Teste Slack
       shell: pwsh
       env:
-        VALOR: $GITHUB_RUN_NUMBER
+        VALOR: aa $GITHUB_RUN_NUMBER
       run: |
         Get-Date
         echo "${{ env.VALOR }}"

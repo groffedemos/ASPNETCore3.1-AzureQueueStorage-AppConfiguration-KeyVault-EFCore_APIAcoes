@@ -18,7 +18,6 @@ jobs:
       shell: pwsh
       run: |
         $Execucao = '{ "workflow": "' + ${env:GITHUB_WORKFLOW} + '", "numExecucao": ' + ${env:GITHUB_RUN_NUMBER} + ' }'
-        echo $Execucao
         Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body $Execucao
 
     - name: Setup .NET Core

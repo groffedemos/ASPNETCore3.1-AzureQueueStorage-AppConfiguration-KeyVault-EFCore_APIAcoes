@@ -19,6 +19,7 @@ jobs:
         TESTE: Worflow $GITHUB_RUN_NUMBER
       run: |
         echo "$GITHUB_RUN_NUMBER"
+        echo "${{ toJson(GITHUB_RUN_NUMBER) }}"
 
     - name: Dump GitHub context
       env:

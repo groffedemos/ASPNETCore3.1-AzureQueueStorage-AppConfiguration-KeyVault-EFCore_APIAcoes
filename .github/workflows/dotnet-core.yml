@@ -19,7 +19,7 @@ jobs:
       env:
         VALOR: ${env:GITHUB_RUN_NUMBER}
       run: |
-        $Execucao = '{ "mensagem": "Execução ' + ${env:GITHUB_RUN_NUMBER} + '" }'
+        $Execucao = '{ "mensagem": "' + ${env:GITHUB_RUN_NUMBER} + '" }'
         Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body $Execucao
 
     - name: Setup .NET Core

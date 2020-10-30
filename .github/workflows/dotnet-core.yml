@@ -14,10 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
+    - name: Teste número execução
+      run: echo "$GITHUB_RUN_NUMBER"
 
     - name: Teste Slack
       shell: pwsh

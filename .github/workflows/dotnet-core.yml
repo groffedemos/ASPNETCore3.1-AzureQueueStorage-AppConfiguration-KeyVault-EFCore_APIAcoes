@@ -22,7 +22,7 @@ jobs:
         VALOR: aa
       run: |
         Write-Host ${env:GITHUB_RUN_NUMBER}
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "${{ env.VALOR }}" }'
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "${env:GITHUB_RUN_NUMBER}" }'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

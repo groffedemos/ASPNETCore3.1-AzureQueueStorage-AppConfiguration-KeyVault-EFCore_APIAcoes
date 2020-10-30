@@ -12,9 +12,7 @@ jobs:
       EXECUCAO: $GITHUB_RUN_NUMBER
 
     runs-on: ubuntu-latest
-
-ASPNETCore3.1-AzureQueueStorage-AppConfiguration-KeyVault-EFCore_APIAcoes/.github/workflows/
-
+    
     steps:
     - uses: actions/checkout@v2
   

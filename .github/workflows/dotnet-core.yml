@@ -14,14 +14,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-      
-    - name: Teste Slack
+    - name: Dump steps context
       env:
-        JSON_MENSAGEM: '{ "mensagem": "Execução {{ env.$GITHUB_RUN_NUMBER }}" }'
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+          
+    - name: Teste Slack
       shell: pwsh
       run: |
         Get-Date
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body "${{ env.JSON_MENSAGEM }}"
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "Bla bla bla" }'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

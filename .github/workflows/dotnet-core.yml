@@ -31,7 +31,7 @@ jobs:
         VALOR: Teste1241234
       run: |
         Get-Date
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": ${{ env.VALOR }} }'
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "${{ env.VALOR }}" }'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

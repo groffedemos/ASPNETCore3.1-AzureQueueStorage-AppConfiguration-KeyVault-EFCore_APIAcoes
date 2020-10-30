@@ -21,9 +21,11 @@ jobs:
 
     - name: Teste Slack
       shell: pwsh
+      env:
+        VALOR: Teste123
       run: |
         Get-Date
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "Bla bla bla" }'
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "{{ env.VALOR }}" }'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

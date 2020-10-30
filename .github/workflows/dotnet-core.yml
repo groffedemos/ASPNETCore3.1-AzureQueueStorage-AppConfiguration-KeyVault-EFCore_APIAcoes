@@ -8,8 +8,6 @@ on:
 
 jobs:
   build:
-    env:
-      EXECUCAO: $GITHUB_RUN_NUMBER
 
     runs-on: ubuntu-latest
     
@@ -21,8 +19,9 @@ jobs:
       env:
         VALOR: ${env:GITHUB_RUN_NUMBER}
       run: |
-        $teste = ${env:GITHUB_RUN_NUMBER}
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "$teste" }'
+        $Execucao = '{ "mensagem": "${env:GITHUB_RUN_NUMBER}" }'
+        echo $Execucao
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body $Execucao
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

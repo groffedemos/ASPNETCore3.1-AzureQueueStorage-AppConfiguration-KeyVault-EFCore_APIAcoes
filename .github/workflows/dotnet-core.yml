@@ -22,7 +22,7 @@ jobs:
       run: pwsh -Command Get-Date
       
     - name: Teste Slack
-      run: pwsh -Command { Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body "" };
+      run: pwsh -Command { Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body (@{ Mensagem = "Teste 123" } | ConvertTo-Json) }
 
     - name: Teste versão
       run: dotnet --version

@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 3.1.301
 
     - name: Teste PowerShell
-      run: Get-Date
+      run: pwsh -Command Get-Date
 
     - name: Teste versão
       run: dotnet --version

@@ -16,7 +16,11 @@ jobs:
 
       
     - name: Teste Slack
-      run: pwsh -Command { Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body ( @{ Mensagem = "Teste 123" } | ConvertTo-Json ) }
+      env:
+        JSON_MENSAGEM: '{ Mensagem = "Teste GitHub Actions" }'
+      run: |
+        echo ${{ env.JSON_MENSAGEM }}
+        pwsh -Command { Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body "${{ env.JSON_MENSAGEM }}" }
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

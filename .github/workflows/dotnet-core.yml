@@ -16,10 +16,12 @@ jobs:
 
       
     - name: Teste Slack
+      env:
+        JSON_MENSAGEM: '{ "mensagem": "Execução {{ env.$GITHUB_RUN_NUMBER }}" }'
       shell: pwsh
       run: |
         Get-Date
-        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "Execução { $GITHUB_RUN_NUMBER }" }'
+        Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body "${{ env.JSON_MENSAGEM }}"
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1

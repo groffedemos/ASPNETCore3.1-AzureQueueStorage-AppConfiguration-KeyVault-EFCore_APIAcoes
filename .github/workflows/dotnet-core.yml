@@ -19,7 +19,6 @@ jobs:
         TESTE: Worflow $GITHUB_RUN_NUMBER
       run: |
         echo "$GITHUB_RUN_NUMBER"
-        echo ${{ env.TESTE }}
 
     - name: Teste Slack
       shell: pwsh

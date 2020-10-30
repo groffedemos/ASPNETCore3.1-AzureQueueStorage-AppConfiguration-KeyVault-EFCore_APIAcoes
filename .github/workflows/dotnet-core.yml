@@ -18,6 +18,9 @@ jobs:
       with:
         dotnet-version: 3.1.301
 
+    - name: Teste versão 0
+      run: dotnet --sblevers
+
     - name: Teste versão
       run: dotnet --xpto
 
@@ -25,6 +28,6 @@ jobs:
       if: success()
       run: echo 'Deu certo'
 
-    - name: Teste sucesso
+    - name: Teste erro
       if: failure()
       run: echo 'Deu errado'

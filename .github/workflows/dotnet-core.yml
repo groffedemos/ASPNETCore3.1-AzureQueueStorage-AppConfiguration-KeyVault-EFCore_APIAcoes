@@ -13,27 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Teste número execução
-      env:
-        TESTE: Worflow $GITHUB_RUN_NUMBER
-      run: |
-        echo "$GITHUB_RUN_NUMBER"
-        echo "${{ toJson($GITHUB_RUN_NUMBER) }}"
-
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-        echo "$GITHUB_CONTEXT.workflow"
   
     - name: Teste Slack
       shell: pwsh
       env:
-        VALOR: Teste1241234
+        VALOR: $GITHUB_RUN_NUMBER
       run: |
         Get-Date
+        echo "${{ env.VALOR }}"
         Invoke-RestMethod -Uri "${{ secrets.URL_LOGIC_APP }}" -Method POST -ContentType "application/json" -Body '{ "mensagem": "${{ env.VALOR }}" }'
 
     - name: Setup .NET Core

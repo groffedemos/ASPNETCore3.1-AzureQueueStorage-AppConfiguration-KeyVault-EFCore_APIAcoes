@@ -24,3 +24,7 @@ jobs:
     - name: Teste sucesso
       if: success()
       run: echo 'Deu certo'
+
+    - name: Teste sucesso
+      if: failure()
+      run: echo 'Deu errado'

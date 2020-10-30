@@ -16,7 +16,7 @@ jobs:
 
     - name: Teste número execução
       env:
-        TESTE: Worflow $GITHUB_RUN_NUMBER
+        TESTE: Worflow ${ GITHUB_RUN_NUMBER }
       run: |
         echo "$GITHUB_RUN_NUMBER"
         echo ${{ env.TESTE }}
